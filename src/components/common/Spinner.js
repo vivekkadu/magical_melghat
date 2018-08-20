@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,ActivityIndicator} from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 
 
 const Spinner = (props) => {
@@ -10,9 +10,9 @@ return (
 );
 };
 
-const styles={
-  SpinnerStyle:{
-   flex: 1,
+const styles = {
+  SpinnerStyle: {
+   //flex: 1,
    marginTop: 200,
    justifyContent: 'center',
    alignItems: 'center'

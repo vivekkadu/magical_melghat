@@ -23,7 +23,7 @@ class Sanctuary extends Component {
       <CardSection>
       <Text style={styles.headingStyle}>Dnyanganga Wildlife Sanctuary</Text>
       </CardSection>
-      <CardSection>
+      <Card style={{ marginBottom: 10 }}>
       <Text style={styles.contentStyle}>
         The Dnyanganga Sanctuary is situated 8 km from Buldhana and
         20 km from Khamgaon town of Maharashtra.
@@ -36,7 +36,7 @@ class Sanctuary extends Component {
         February to May. The terrain is undulating, interspersed with hillocks
         having gentle slopes.
       </Text>
-      </CardSection>
+      </Card>
       </Card>
 
       <Card>
@@ -60,7 +60,7 @@ const styles = {
     padding: 10
   },
   contentStyle: {
-    color: 'white',
+    color: 'black',
     fontSize: 15,
     padding: 10
   }

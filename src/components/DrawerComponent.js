@@ -32,7 +32,7 @@ class DrawerComponent extends Component {
   <Container style={styles.drawerStyles}>
     <ScrollView>
 
-       <TouchableWithoutFeedback onPress={() => { this.props.closeDrawer(); }} >
+       <TouchableWithoutFeedback>
        <View>
 
          <Card style={{ borderColor: '#D6D6D4', borderBottomWidth: 1 }}>

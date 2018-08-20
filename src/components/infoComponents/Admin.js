@@ -5,30 +5,25 @@ import { Card, CardSection } from '../common';
 
 class Admin extends React.Component {
   render() {
-    const TopContent = `<p><b>~ Melghat Tiger Project : </b><br><br>The Melghat, nestling in the Satpuda hill ranges of Forsyth’s and Dunbar’s Central India’s vast tracts of inviolate natural forests, consisting of unique and representative ecosystems with rich biodiversity and varied habitats offered by deep valleys (locally known as khoras) and high hills (locally known as Ballas), daunted with rivers and nallahs having water all the year round in the ‘doh’, was the natural choice for the community of foresters in Maharashtra, when it came to choose an area for preserving it for posterity and for ensuring that the ‘Tiger’ the most magnificent and flagship of the Indian wild species, could sustain a viable population and survive for the eternity.
-    <br>The fascinating landscape, its enchanting beauty and richness leave everlasting imprints on people visiting the area.Melghat Tiger Reserve is one of the earliest 9 Tiger Reserves established by the Government of India and is the First Tiger Reserve to be declared in the State of Maharashtra.It came into being on 22nd February, 1974.</p>`;
+    const TopContent = `<p><b>~ Administrative Control : </b><br><br> The entire area of Melghat Tiger Reserve is administratively controlled by Chief Conservator of Forests and Field Director having headquarter at Amravati. The area has been divided into three Wildlife Divisions; namely Sipna Wildlife Division, Paratwada, Gugamal Wildlife Division Paratwada and Akot Wildlife Division Akot. Entire area of the Reserve including the area of Wan, Ambabarwa and Narnala sanctuaries along with 3 Deputy Conservator of Forests and their staff has been put under Directorate through the Government of Maharashtra Order No. WLP/1094/Pra 211/F-1/Dated 26th April 1999 for unified Control.</p>`;
 
-    const middleContent = `<p><b>~Name, Location, Constitution and Extent :</b><br><br>
-    (i)  Name: The area of the Critical Tiger Habitat is 1500.49 Sq.Km., falling in the heart of the Melghats. Out of this, 1150.03 Sq.Km. (Gugamal and Melghat Sanctuary) belongs to the initially declared Melghat Tiger Reserve which was declared on 22nd February 1974 and the remaining area of three Wildlife Sanctuaries namely Wan, Ambabarwa and Narnala, added to it on 27/12/2007 now comprise the core area of the Critical Tiger Habitat of the Melghat Tiger Reserve
-  <br> (ii) Location: Situated in Satpuda hill ranges of Central India, the area of Critical Tiger Habitat of the Melghat Tiger Reserve lies in Melghat forests of Amravati, Akola and Buldhana Districts of Vidarbha region of Maharashtra, bordering Madhya Pradesh in the North and East.
-    <br>This area is geographically located as below.
-       <br>Latitude:  Between 210  441  N  and  210  081 N
-       <br>Longitude: Between 760  391  E  and  770  311 E</p>`
+    const middleContent = `<p><b>~ Legal Status of Gugamal National Park and Melghat Sanctuary :</b><br><br>
+      Govt. of Maharashtra, Revenue& Forests Department vide Gazette Notification No. WLP 1978/10553 (9), F-5, Dated 5th September 1985, declared an area of 1597.23 sq km as Melghat Tiger Sanctuary . Govt. of Maharashtra Revenue & Forests Department vide Notification No./WLP-1086/18061/F-5/Dated 27 November, 1987 declared its intention to constitute an area of 361.80 sq. km.  as a National Park   The total area of Melghat Tiger Reserve was enhanced from 1597.23 sq. km. to 1624.30 sq km. on 27.11.1987.  Govt. of Maharashtra.  Revenue & Forests, Department vide Gazette Notification No. WLP- 1092/Pra-526/ F-5, dated 15.2.1994 reconstituted the area of Melghat Sanctuary to 1150.03 sq km on administrative grounds .  Reserve Forest area of Melghat Sanctuary has been finally notified as Melghat Sanctuary vide Notification No.W.L.P-10-2000, C.R- 41/F- 1/ dated 6th  November 2000 admeasuring 767.36 Sq km.  Final notification about Gugamal National Park has been issued vide No. WLP-1098/CR-135/F-1/Dated 8th August, 2000 admeasuring 361.28 sq km.</p>`
     return (
       <ScrollView>
       <Card>
-      <CardSection>
+
       <HTMLView
         value={TopContent}
         stylesheet={styles}
       />
-      </CardSection>
-      <CardSection style={{ marginTop: 10 }}>
+      </Card>
+
+      <Card style={{ marginTop: 10 }}>
       <HTMLView
         value={middleContent}
         stylesheet={styles}
       />
-      </CardSection>
       </Card>
       </ScrollView>
     );
@@ -38,7 +33,7 @@ class Admin extends React.Component {
 const styles = StyleSheet.create({
   p: {
     fontSize: 15,
-    color: 'white',
+    color: 'black',
 justifyContent: 'center',
 paddingLeft: 10,
 paddingTop: 13,

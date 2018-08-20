@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Image, BackHandler, Linking } from 'react-native';
+import { ScrollView, Image, BackHandler, Linking, TouchableOpacity, Modal } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-elements';
 import { Button, Text } from 'native-base';
@@ -61,21 +61,44 @@ class MachaanBooking extends Component {
 
           </CardSection>
 
+          <TouchableOpacity onPress={() => { this.setState({ showModal: true })}}>
           <CardSection>
                       <Image
                       style={styles.imageStyle}
                       source={require('../img/MachaanDate.png')}
                       />
          </CardSection>
+         </TouchableOpacity>
 
 
-         <Button style={styles.buttonStyle} onPress={() => Linking.openURL('http://www.magicalmelghat.com/MachaanDivision.aspx')}  >
+         <Button style={styles.buttonStyle} onPress={() => Actions.MachaanBookingForm()} >
               <Text>Click To Book</Text>
          </Button>
 
 
         </Card>
 
+        <Modal
+        animationType="slide"
+        onRequestClose={() => { this.setState({ showModal: false }); }}
+        visible={this.state.showModal}>
+
+        <TouchableOpacity onPress={() => { this.setState({ showModal: false })} }>
+        <CardSection style={{ height: 30, backgroundColor: 'white' }}>
+             <Icon name='arrow-back' style={styles.iconStyle} />
+             <Text style={styles.backStyle}>Back</Text>
+        </CardSection>
+        </TouchableOpacity>
+
+        <Gallery
+        style={{ flex: 1, backgroundColor: 'black' }}
+        images={[
+            { source: { uri: 'http://magicalmelghat.com/UPLOADimages/780260MachaanDateInfo.jpg' } }
+        ]}
+        />
+
+
+        </Modal>
       </ScrollView>
     );
   }

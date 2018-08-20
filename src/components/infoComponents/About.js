@@ -14,7 +14,7 @@ class About extends React.Component {
   }
 
   backAndroid() {
-   Actions.Home();
+//Actions.Home();
    return true;
   }
   render() {
@@ -30,18 +30,16 @@ class About extends React.Component {
     return (
       <ScrollView>
       <Card>
-      <CardSection>
       <HTMLView
         value={TopContent}
         stylesheet={styles}
       />
-      </CardSection>
-      <CardSection style={{ marginTop: 10 }}>
+      </Card>
+      <Card style={{ marginTop: 10 }}>
       <HTMLView
         value={middleContent}
         stylesheet={styles}
       />
-      </CardSection>
       </Card>
       </ScrollView>
     );
@@ -51,7 +49,7 @@ class About extends React.Component {
 const styles = StyleSheet.create({
   p: {
     fontSize: 15,
-    color: 'white',
+    color: 'black',
     justifyContent: 'center',
     paddingLeft: 10,
     paddingTop: 13,

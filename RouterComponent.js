@@ -3,8 +3,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import Home from './src/components/Home';
 import info from './src/components/info';
 import Gallery from './src/components/Gallery';
-import AccomodationForm from './src/components/AccomodationForm';
-import AccomodationForm2 from './src/components/AccomodationForm2';
+import Accomodation from './src/components/Accomodation';
 import howtoreach from './src/components/howtoreach';
 import SafariBooking from './src/components/SafariBooking';
 import NightSafariBookingForm from './src/components/NightSafariBookingForm';
@@ -17,6 +16,9 @@ import Contact from './src/components/Contact';
 import DoYouKnow from './src/components/DoYouKnow';
 import VideoGallery from './src/components/VideoGallery';
 import YoutubeViewer from './src/components/YoutubeViewer';
+import MachaanBookingForm from './src/components/MachaanBookingForm';
+import MachaanBookingForm2 from './src/components/MachaanBookingForm2';
+
 
 class RouterComponent extends Component {
 
@@ -39,25 +41,16 @@ class RouterComponent extends Component {
       />
 
       <Scene
-      key="AccomodationForm"
+        key="AccomodationForm"
+        //hideNavBar
         titleStyle={{ color: 'white' }}
         backButtonImage={require('./src/img/back.png')}
-      //  leftButtonImage={require('./src/img/lines.png')}
+        //leftButtonImage={require('./src/img/lines.png')}
         //leftButtonIconStyle={styles.leftButton}
         //onLeft={() => this.openDrawer()}
         navigationBarStyle={styles.navbarStyle}
         title="Accomodation"
-        component={AccomodationForm}
-      />
-
-      <Scene
-      key="AccomodationForm2"
-
-        titleStyle={{ color: 'white' }}
-        backButtonImage={require('./src/img/back.png')}
-        navigationBarStyle={styles.navbarStyle}
-        title="Accomodation"
-        component={AccomodationForm2}
+        component={Accomodation}
       />
 
       <Scene
@@ -82,6 +75,30 @@ class RouterComponent extends Component {
         navigationBarStyle={styles.navbarStyle}
         title="Machaan Booking"
         component={MachaanBooking}
+      />
+
+      <Scene
+        key="MachaanBookingForm"
+        titleStyle={{ color: 'white' }}
+        backButtonImage={require('./src/img/back.png')}
+        //leftButtonImage={require('./src/img/lines.png')}
+        //leftButtonIconStyle={styles.leftButton}
+        //onLeft={() => this.openDrawer()}
+        navigationBarStyle={styles.navbarStyle}
+        title="Machaan Booking"
+        component={MachaanBookingForm}
+      />
+
+      <Scene
+        key="MachaanBookingForm2"
+        titleStyle={{ color: 'white' }}
+        backButtonImage={require('./src/img/back.png')}
+        //leftButtonImage={require('./src/img/lines.png')}
+        //leftButtonIconStyle={styles.leftButton}
+        //onLeft={() => this.openDrawer()}
+        navigationBarStyle={styles.navbarStyle}
+        title="Machaan Booking"
+        component={MachaanBookingForm2}
       />
 
         <Scene

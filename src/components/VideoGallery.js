@@ -14,6 +14,7 @@ import { Card, CardSection, Spinner } from './common';
 
 class VideoGallery extends Component {
 
+
   constructor(props) {
     super(props)
     this.state = {
@@ -28,7 +29,7 @@ class VideoGallery extends Component {
       .then((response) => response.json())
       .then((responseJson) => {
         var videoId = []
-        responseJson.items.forEach(function(item){
+        responseJson.items.forEach(function (item){
           videoId.push(item)
         })
         this.setState({
@@ -90,8 +91,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   searchStyle: {
-    height:50,
-    width:50
+    height: 50,
+    width: 50
   },
   thumbnailsStyle: {
     width: 320,

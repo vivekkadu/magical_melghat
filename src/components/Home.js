@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import {
-  View, StatusBar, Text, ScrollView, BackHandler, Image, TouchableOpacity
+  View, StatusBar, Alert, Text, Dimensions, ScrollView, BackHandler, Image, TouchableOpacity
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import axios from 'axios';
 import { Drawer } from 'native-base';
-import ImageSlider from './ImageSlider';
+import Swiper from 'react-native-swiper';
 import SideBar from './DrawerComponent';
-import ImageGallery from './ImageGallery';
 import { Card, CardSection } from './common';
 
 class Home extends Component {
+
 
   constructor(props) {
     console.disableYellowBox = true;
@@ -22,15 +21,7 @@ class Home extends Component {
           interval: null,
       };
   }
-  state={ albums: [], drawer: false };
-
-  componentWillMount() {
-    axios.get('https://vivekkaducodeplayer.000webhostapp.com/project/LibraryList.json')
-       .then(response => this.setState({ albums: response.data }));
-      this.setState({ interval: setInterval(() => {
-          this.setState({ position: this.state.position === 2 ? 0 : this.state.position + 1});
-      }, 3000) });
-  }
+  state={ drawer: false };
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => this.backAndroid());
@@ -41,16 +32,31 @@ class Home extends Component {
     BackHandler.removeEventListener('hardwareBackPress', () => this.backAndroid());
   }
 
-  backAndroid() {
-      if (this.state.drawer)
-      {
-        this.setState({ drawer: false });
-        return this.closeDrawer();
+  ExitAlert() {
+    Alert.alert(
+    'Exit App',
+    'Exiting the application?', [{
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel'
+    }, {
+        text: 'OK',
+        onPress: () => BackHandler.exitApp()
+    }, ], {
+        cancelable: false
+    }
 
-      }
-      else {
-        BackHandler.exitApp();
-      }
+ )
+ return true;
+  }
+
+  backAndroid() {
+   if (this.state.drawer) {
+     this.setState({ drawer: 'false' });
+     return this.closeDrawer();
+   } else {
+     return this.ExitAlert();
+   }
    }
 
        closeDrawer() {
@@ -65,50 +71,78 @@ class Home extends Component {
          }
 
   render() {
+
     return (
       <Drawer
        ref={(ref) => { this.drawer = ref; }}
        styles={styles.drawerStyles}
-       openDrawerOffset={110}
+       openDrawerOffset={Dimensions.get('window').width / 3}
+       panOpenMask={0.3}
+       captureGestures="open"
        content={<SideBar closeDrawer={this.closeDrawer} />}
        onClose={() => this.closeDrawer()} >
 
       <ScrollView>
-      <StatusBar
-       backgroundColor="#11772D"
-       barStyle="light-content"
-      />
+
+              <StatusBar
+              backgroundColor="#11772D"
+              barStyle="light-content"
+
+              />
 
       <View style={{ backgroundColor: 'white' }}>
-      <CardSection style={styles.CardSectionStyle}>
-       <TouchableOpacity onPress={() => this.openDrawer()}>
-      <Image
-        style={styles.leftButtonStyle}
-        source={require('../img/lines.png')}
-        />
-        </TouchableOpacity>
-      <Text style={styles.headingStyle}>
-      Magical Melghat
-      </Text>
-      </CardSection>
-      <Card >
+              <CardSection style={styles.CardSectionStyle}>
 
-      <CardSection>
+              <TouchableOpacity onPress={() => this.openDrawer()}>
+
+              <Image
+                style={styles.leftButtonStyle}
+                source={require('../img/lines.png')}
+                />
+
+        </TouchableOpacity>
+
+      <Text style={styles.headingStyle}>
+         Magical Melghat
+      </Text>
+
+        </CardSection>
+          <Card >
+
+          <CardSection>
             <Text style={styles.titleStyle}>
               Melghat Tiger Reserve
            </Text>
       < /CardSection>
 
       <CardSection>
-               <ImageSlider
-                   height={220}
-                    images={[
-                        'https://vivekkaducodeplayer.000webhostapp.com/project/tigertechposter.png',
-                        'https://vivekkaducodeplayer.000webhostapp.com/pexels-photo-145939.png',
-                        'https://vivekkaducodeplayer.000webhostapp.com/pexels-photo-110812.png'
-                    ]}
-                    position={this.state.position}
-                    onPositionChanged={position => this.setState({ position })} />
+      <Swiper
+      style={styles.wrapper}
+      autoplayTimeout={3.0}
+      autoplay showsPagination={false}
+      >
+              <View style={styles.slide1}>
+              <Image
+                style={styles.sliderImage}
+                source={require('../img/pexels-photo-145939.png')}
+                />
+             </View>
+
+             <View style={styles.slide2}>
+              <Image
+                style={styles.sliderImage}
+                source={require('../img/pexels-photo-110812.png')}
+                />
+
+              </View>
+
+              <View style={styles.slide3}>
+              <Image
+                style={styles.sliderImage}
+                source={require('../img/leopard-wildcat-big-cat-botswana-46254.png')}
+                />
+              </View>
+              </Swiper>
          </CardSection>
 
          <CardSection>
@@ -119,7 +153,7 @@ class Home extends Component {
 
         <Card style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
 
-            <TouchableOpacity onPress={() => Actions.info()}>
+            <TouchableOpacity onPress={() => Actions.push('info')}>
 
                 <CardSection style={{ flex: 1 }}>
                    <Image
@@ -142,21 +176,21 @@ class Home extends Component {
                    />
                   <Text style={styles.linkStyle}>How to Reach</Text>
             </CardSection>
-            </TouchableOpacity>
-       </Card>
+               </TouchableOpacity>
+            </Card>
 
 
-   <TouchableOpacity onPress={() => Actions.Gallery()}>
-       <Card style={{ flexDirection: 'row' }}>
-           <CardSection style={{ flex: 1 }}>
-              <Image
+           <TouchableOpacity onPress={() => Actions.Gallery()}>
+              <Card style={{ flexDirection: 'row' }}>
+              <CardSection style={{ flex: 1 }}>
+               <Image
                style={styles.iconStyle}
                source={require('../img/gallery.png')}
                />
-             <Text style={styles.linkStyle}>Gallery </Text>
-          </CardSection>
-       </Card>
-    </TouchableOpacity>
+               <Text style={styles.linkStyle}>Gallery </Text>
+              </CardSection>
+              </Card>
+           </TouchableOpacity>
 
       <TouchableOpacity onPress={() => Actions.Sanctuary()}>
       <Card>
@@ -182,9 +216,13 @@ class Home extends Component {
               <Text style={styles.linkStyle}>Rules & Regulations</Text>
           </CardSection>
       </Card>
-     </TouchableOpacity>
-      </View>
-      </ScrollView>
+
+          </TouchableOpacity>
+
+         </View>
+
+        </ScrollView>
+
       </Drawer>
 
     );
@@ -244,16 +282,40 @@ leftButtonStyle: {
   width: 40
 },
 drawerStyles: {
-shadowColor: '#000000',
-shadowOpacity: 0.8,
-shadowRadius: 3
+   shadowColor: '#000000',
+   shadowOpacity: 0.8,
+   shadowRadius: 3
 },
 headingStyle: {
-  color: 'white',
-  fontWeight: 'bold',
-  fontSize: 22,
-  marginTop: 3,
+   color: 'white',
+   fontWeight: 'bold',
+   fontSize: 22,
+   marginTop: 3,
    marginLeft: 20
-}
+},
+wrapper: {
+  height: 220
+ },
+ slide1: {
+   flex: 1,
+   justifyContent: 'center',
+   alignItems: 'center',
+   backgroundColor: 'white',
+ },
+ slide2: {
+   justifyContent: 'center',
+   alignItems: 'center',
+   backgroundColor: 'white',
+ },
+ slide3: {
+   justifyContent: 'center',
+   alignItems: 'center',
+   backgroundColor: 'white',
+ },
+ sliderImage: {
+   height: 220,
+   width: Dimensions.get('window').width
+
+ }
 };
 export default Home;

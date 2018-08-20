@@ -218,9 +218,9 @@ const styles = {
     flex: 1,
     padding: 5
   },
-  head: { height: 35, backgroundColor: '#f1f8ff' },
+  head: { height: 35, backgroundColor: 'white' },
   text: { marginLeft: 5, color: 'black', fontSize: 14, justifySelf: 'center' },
-  row: { height: 20 },
+  row: { height: 20, backgroundColor: 'white' },
 
   CardSectionStyle: {
     marginTop: 15,
@@ -235,10 +235,11 @@ const styles = {
   },
   ruleContainerStyle: {
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+  backgroundColor: 'white'
   },
   rulesStyle: {
-    color: 'white',
+    color: 'black',
     fontSize: 14,
     padding: 10
   }

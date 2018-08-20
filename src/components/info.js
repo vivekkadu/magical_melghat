@@ -15,7 +15,7 @@ class info extends Component {
  }
 
  backAndroid() {
-   Actions.Home();
+   Actions.replace('Home');
    return true;
  }
   render() {
